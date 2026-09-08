@@ -1,1 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Campus Helper AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =====================================================
+     APP
+===================================================== -->
+
+<div class="app">
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">📍</div>
+
+            <div>
+                <h1>Campus Helper</h1>
+                <span>AI Campus Companion</span>
+            </div>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <button class="nav-item active"
+                    onclick="showPage('dashboard', this)">
+                <span>🏠</span>
+                Dashboard
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('assistant', this)">
+                <span>🤖</span>
+                AI Assistant
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('map', this)">
+                <span>🗺️</span>
+                Campus Map
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('food', this)">
+                <span>🍔</span>
+                Food
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('library', this)">
+                <span>📚</span>
+                Library
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('events', this)">
+                <span>📅</span>
+                Events
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('academics', this)">
+                <span>🎓</span>
+                Academics
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('complaints', this)">
+                <span>🎫</span>
+                Report Issue
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('emergency', this)">
+                <span>🚨</span>
+                Emergency
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button class="theme-btn" onclick="toggleTheme()">
+                <span id="theme-icon">🌙</span>
+                <span id="theme-text">Dark Mode</span>
+            </button>
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                <div>
+                    <strong>System Online</strong>
+                    <small>Campus services connected</small>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =================================================
+         MAIN
+    ================================================== -->
+
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div class="mobile-brand">
+                📍 Campus Helper
+            </div>
+
+            <div class="global-search">
+
+                <span>🔎</span>
+
+                <input
+                    type="text"
+                    id="global-search"
+                    placeholder="Search classrooms, buildings, food, events..."
+                    oninput="globalSearch()"
+                >
+
+            </div>
+
+            <div class="top-actions">
+
+                <button class="icon-btn"
+                        onclick="showPage('assistant')"
+                        title="AI Assistant">
+                    🤖
+                </button>
+
+                <button class="icon-btn"
+                        onclick="toggleTheme()"
+                        title="Toggle theme">
+                    🌓
+                </button>
+
+                <div class="profile">
+                    <div class="profile-avatar">S</div>
+
+                    <div class="profile-info">
+                        <strong>Student</strong>
+                        <span>Campus User</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             SEARCH RESULTS
+        ================================================== -->
+
+        <div id="global-results" class="global-results"></div>
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+        <section class="content">
+
+
+            <!-- =================================================
+                 DASHBOARD
+            ================================================== -->
+
+            <div id="dashboard-page" class="page active">
+
+                <div class="welcome">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            SMART CAMPUS PLATFORM
+                        </span>
+
+                        <h2>
+                            Welcome to <span>Campus Helper AI</span> 👋
+                        </h2>
+
+                        <p>
+                            Your intelligent companion for academics,
+                            campus services, navigation and everyday college life.
+                        </p>
+
+                    </div>
+
+                    <button class="primary-btn"
+                            onclick="showPage('assistant')">
+                        🤖 Ask Campus AI
+                    </button>
+
+                </div>
+
+
+                <!-- STATS -->
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon blue">🏫</div>
+
+                        <div>
+                            <span>Buildings</span>
+                            <strong id="stat-buildings">--</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon purple">🎓</div>
+
+                        <div>
+                            <span>Classrooms</span>
+                            <strong id="stat-classrooms">--</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon orange">🍔</div>
+
+                        <div>
+                            <span>Food Spots</span>
+                            <strong id="stat-food">--</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <div class="stat-icon green">📅</div>
+
+                        <div>
+                            <span>Upcoming Events</span>
+                            <strong id="stat-events">--</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DASHBOARD GRID -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- AI CARD -->
+
+                    <div class="panel ai-dashboard-card">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="panel-label">AI ASSISTANT</span>
+                                <h3>Your Campus Copilot 🤖</h3>
+                            </div>
+
+                            <span class="online-badge">
+                                ● Online
+                            </span>
+
+                        </div>
+
+                        <p>
+                            Ask me where a classroom is, library availability,
+                            upcoming events, food timings, departments,
+                            Wi-Fi issues and more.
+                        </p>
+
+
+                        <div class="quick-prompts">
+
+                            <button onclick="askAI('Where is C-204?')">
+                                📍 Where is C-204?
+                            </button>
+
+                            <button onclick="askAI('Is the library busy?')">
+                                📚 Library status
+                            </button>
+
+                            <button onclick="askAI('Show upcoming events')">
+                                📅 Events
+                            </button>
+
+                            <button onclick="askAI('Show food options')">
+                                🍔 Food
+                            </button>
+
+                        </div>
+
+
+                        <button class="secondary-btn"
+                                onclick="showPage('assistant')">
+                            Open AI Assistant →
+                        </button>
+
+                    </div>
+
+
+                    <!-- LIBRARY -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="panel-label">LIBRARY</span>
+                                <h3>Central Library</h3>
+                            </div>
+
+                            <span id="dashboard-library-status"
+                                  class="status-badge">
+                                Loading
+                            </span>
+
+                        </div>
+
+                        <div class="occupancy">
+
+                            <div class="occupancy-circle"
+                                 id="dashboard-library-circle">
+                                <strong id="dashboard-library-percent">
+                                    --
+                                </strong>
+                                <span>occupied</span>
+                            </div>
+
+                            <div>
+
+                                <p class="muted">
+                                    Current campus reading space
+                                </p>
+
+                                <strong id="dashboard-library-time">
+                                    Loading...
+                                </strong>
+
+                                <p class="small">
+                                    🪑 Best available floor:
+                                    <span id="dashboard-best-floor">
+                                        --
+                                    </span>
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <button class="text-btn"
+                                onclick="showPage('library')">
+                            View library details →
+                        </button>
+
+                    </div>
+
+
+                    <!-- FOOD -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="panel-label">CAMPUS FOOD</span>
+                                <h3>Food & Canteens</h3>
+                            </div>
+
+                            <span class="food-live">
+                                ● LIVE
+                            </span>
+
+                        </div>
+
+                        <div id="dashboard-food"
+                             class="mini-list">
+
+                            <div class="loading">
+                                Loading food spots...
+                            </div>
+
+                        </div>
+
+                        <button class="text-btn"
+                                onclick="showPage('food')">
+                            Explore food →
+                        </button>
+
+                    </div>
+
+
+                    <!-- EVENTS -->
+
+                    <div class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="panel-label">CAMPUS LIFE</span>
+                                <h3>Upcoming Events</h3>
+                            </div>
+
+                        </div>
+
+                        <div id="dashboard-events"
+                             class="mini-events">
+
+                            <div class="loading">
+                                Loading events...
+                            </div>
+
+                        </div>
+
+                        <button class="text-btn"
+                                onclick="showPage('events')">
+                            View all events →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ANNOUNCEMENTS -->
+
+                <div class="panel announcements-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="panel-label">
+                                CAMPUS UPDATES
+                            </span>
+
+                            <h3>Latest Announcements</h3>
+                        </div>
+
+                        <button class="text-btn"
+                                onclick="loadAnnouncements()">
+                            Refresh ↻
+                        </button>
+
+                    </div>
+
+                    <div id="dashboard-announcements"
+                         class="announcement-list">
+
+                        Loading announcements...
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 AI ASSISTANT
+            ================================================== -->
+
+            <div id="assistant-page" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">INTELLIGENT CAMPUS</span>
+
+                        <h2>Campus Helper AI 🤖</h2>
+
+                        <p>
+                            Ask questions and get instant campus assistance.
+                        </p>
+                    </div>
+
+                    <span class="online-badge large">
+                        ● AI Online
+                    </span>
+
+                </div>
+
+
+                <div class="ai-layout">
+
+                    <div class="ai-chat panel">
+
+                        <div id="chat-messages"
+                             class="chat-messages">
+
+                            <div class="chat-message bot">
+
+                                <div class="chat-avatar">
+                                    🤖
+                                </div>
+
+                                <div class="message-bubble">
+
+                                    <strong>Campus Helper AI</strong>
+
+                                    <p>
+                                        Hey! 👋 I'm your campus assistant.
+                                        Ask me about classrooms, library,
+                                        food, events, departments,
+                                        Wi-Fi or emergencies.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="chat-suggestions">
+
+                            <button onclick="askAI('Where is C-204?')">
+                                📍 Where is C-204?
+                            </button>
+
+                            <button onclick="askAI('Is the library busy?')">
+                                📚 Library status
+                            </button>
+
+                            <button onclick="askAI('What events are coming?')">
+                                📅 Events
+                            </button>
+
+                            <button onclick="askAI('Where can I eat?')">
+                                🍔 Food
+                            </button>
+
+                        </div>
+
+
+                        <div class="chat-input">
+
+                            <input
+                                type="text"
+                                id="ai-input"
+                                placeholder="Ask Campus Helper AI..."
+                                onkeydown="handleAIKey(event)"
+                            >
+
+                            <button onclick="sendAIMessage()">
+                                ➤
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="ai-sidebar">
+
+                        <div class="panel">
+
+                            <span class="panel-label">
+                                WHAT I CAN DO
+                            </span>
+
+                            <div class="capability">
+                                📍
+                                <div>
+                                    <strong>Campus Navigation</strong>
+                                    <span>Find classrooms & buildings</span>
+                                </div>
+                            </div>
+
+                            <div class="capability">
+                                📚
+                                <div>
+                                    <strong>Library</strong>
+                                    <span>Check occupancy & seats</span>
+                                </div>
+                            </div>
+
+                            <div class="capability">
+                                🍔
+                                <div>
+                                    <strong>Food</strong>
+                                    <span>Find canteens & timings</span>
+                                </div>
+                            </div>
+
+                            <div class="capability">
+                                📅
+                                <div>
+                                    <strong>Events</strong>
+                                    <span>Discover campus activities</span>
+                                </div>
+                            </div>
+
+                            <div class="capability">
+                                🚨
+                                <div>
+                                    <strong>Emergency</strong>
+                                    <span>Get help quickly</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MAP
+            ================================================== -->
+
+            <div id="map-page" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">NAVIGATION</span>
+                        <h2>Smart Campus Map 🗺️</h2>
+                        <p>Explore buildings and campus facilities.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="map-layout">
+
+                    <div class="campus-map panel">
+
+                        <div class="map-grid"></div>
+
+                        <div class="map-road road-1"></div>
+                        <div class="map-road road-2"></div>
+                        <div class="map-road road-3"></div>
+
+                        <button class="map-marker marker-a"
+                                onclick="mapLocation('Building A','Academic Block')">
+                            🏫
+                            <span>Building A</span>
+                        </button>
+
+                        <button class="map-marker marker-c"
+                                onclick="mapLocation('Building C','Academic Block')">
+                            🏫
+                            <span>Building C</span>
+                        </button>
+
+                        <button class="map-marker marker-lab"
+                                onclick="mapLocation('Lab Block','Laboratories')">
+                            🧪
+                            <span>Lab Block</span>
+                        </button>
+
+                        <button class="map-marker marker-library"
+                                onclick="mapLocation('Central Library','Library')">
+                            📚
+                            <span>Library</span>
+                        </button>
+
+                        <button class="map-marker marker-sports"
+                                onclick="mapLocation('Sports Complex','Sports Facility')">
+                            ⚽
+                            <span>Sports</span>
+                        </button>
+
+                        <button class="map-marker marker-aud"
+                                onclick="mapLocation('Main Auditorium','Event Facility')">
+                            🎭
+                            <span>Auditorium</span>
+                        </button>
+
+                        <div class="map-you">
+                            📍
+                            <span>You are here</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="map-sidebar">
+
+                        <div class="panel">
+
+                            <span class="panel-label">
+                                FIND LOCATION
+                            </span>
+
+                            <div class="location-search">
+
+                                <input
+                                    id="location-search"
+                                    placeholder="e.g. C-204"
+                                >
+
+                                <button onclick="findLocation()">
+                                    Find
+                                </button>
+
+                            </div>
+
+                            <div id="location-result"
+                                 class="location-result">
+
+                                <div class="empty-state">
+                                    <span>🧭</span>
+                                    <p>Search for a classroom or building</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="panel">
+
+                            <span class="panel-label">
+                                CAMPUS PLACES
+                            </span>
+
+                            <div id="building-list"
+                                 class="place-list">
+                                Loading...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 FOOD
+            ================================================== -->
+
+            <div id="food-page" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">CAMPUS DINING</span>
+                        <h2>Food & Canteens 🍔</h2>
+                        <p>Find food spots, timings and menu options.</p>
+                    </div>
+
+                </div>
+
+
+                <div id="food-grid"
+                     class="food-grid">
+
+                    <div class="loading-card">
+                        Loading food spots...
+                    </div>
+
+                </div>
+
+
+                <div class="panel food-timings-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="panel-label">
+                                MEAL TIMINGS
+                            </span>
+
+                            <h3>Today's Food Schedule</h3>
+                        </div>
+
+                    </div>
+
+                    <div id="food-timings"
+                         class="timing-grid">
+
+                        Loading...
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 LIBRARY
+            ================================================== -->
+
+            <div id="library-page" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">STUDY SPACE</span>
+                        <h2>Smart Library 📚</h2>
+                        <p>Check occupancy and available seats.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="library-overview panel">
+
+                    <div class="library-main">
+
+                        <div class="library-circle">
+
+                            <strong id="library-percent">
+                                --
+                            </strong>
+
+                            <span>Occupied</span>
+
+                        </div>
+
+                        <div>
+
+                            <span class="panel-label">
+                                CENTRAL LIBRARY
+                            </span>
+
+                            <h3 id="library-status">
+                                Loading...
+                            </h3>
+
+                            <p id="library-timings">
+                                --
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="library-summary">
+
+                        <div>
+                            <span>Floors</span>
+                            <strong id="library-floors">--</strong>
+                        </div>
+
+                        <div>
+                            <span>Total Seats</span>
+                            <strong id="library-total-seats">--</strong>
+                        </div>
+
+                        <div>
+                            <span>Available</span>
+                            <strong id="library-available-seats">--</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <h3 class="section-title">
+                    Floor Availability
+                </h3>
+
+                <div id="library-floors-grid"
+                     class="floor-grid">
+
+                    Loading...
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 EVENTS
+            ================================================== -->
+
+            <div id="events-page" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">CAMPUS LIFE</span>
+                        <h2>Events & Announcements 📅</h2>
+                        <p>Stay updated with what's happening on campus.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="events-section">
+
+                    <h3 class="section-title">
+                        Upcoming Events
+                    </h3>
+
+                    <div id="events-grid"
+                         class="events-grid">
+
+                        Loading...
+
+                    </div>
+
+                </div>
+
+
+                <div class="events-section">
+
+                    <h3 class="section-title">
+                        Announcements
+                    </h3>
+
+                    <div id="announcements-page"
+                         class="announcement-list panel">
+
+                        Loading...
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ACADEMICS
+            ================================================== -->
+
+            <div id="academics-page" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">ACADEMICS</span>
+                        <h2>Academic Navigator 🎓</h2>
+                        <p>Find classrooms, departments and academic blocks.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="academic-search panel">
+
+                    <span class="panel-label">
+                        FIND CLASSROOM
+                    </span>
+
+                    <div class="large-search">
+
+                        <input
+                            id="classroom-search"
+                            placeholder="Search classroom, section, building..."
+                            oninput="searchClassrooms()"
+                        >
+
+                        <button onclick="searchClassrooms()">
+                            🔎 Search
+                        </button>
+
+                    </div>
+
+                    <div id="classroom-results"
+                         class="classroom-results">
+
+                        <div class="empty-state">
+                            <span>🎓</span>
+                            <p>Search for a classroom</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <h3 class="section-title">
+                    Departments
+                </h3>
+
+                <div id="departments-grid"
+                     class="departments-grid">
+
+                    Loading...
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 COMPLAINTS
+            ================================================== -->
+
+            <div id="complaints-page" class="page">
+
+                <div class="page-heading">
+
+                    <div>
+                        <span class="eyebrow">CAMPUS SERVICES</span>
+                        <h2>Report an Issue 🎫</h2>
+                        <p>
+                            Help improve the campus by reporting problems.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="complaint-layout">
+
+                    <form id="complaint-form"
+                          class="panel complaint-form"
+                          onsubmit="submitComplaint(event)">
+
+                        <span class="panel-label">
+                            NEW REPORT
+                        </span>
+
+                        <h3>Tell us what's wrong</h3>
+
+                        <label>
+                            Issue Title
+
+                            <input
+                                id="complaint-title"
+                                required
+                                placeholder="e.g. Projector not working"
+                            >
+                        </label>
+
+
+                        <label>
+                            Category
+
+                            <select id="complaint-category">
+
+                                <option>Infrastructure</option>
+                                <option>Cleanliness</option>
+                                <option>Electricity</option>
+                                <option>Internet / Wi-Fi</option>
+                                <option>Classroom</option>
+                                <option>Library</option>
+                                <option>Food / Canteen</option>
+                                <option>Other</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+                            Location
+
+                            <input
+                                id="complaint-location"
+                                placeholder="e.g. C-204"
+                            >
+                        </label>
+
+
+                        <label>
+                            Priority
+
+                            <select id="complaint-priority">
+
+                                <option>Low</option>
+                                <option selected>Medium</option>
+                                <option>High</option>
+                                <option>Critical</option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label>
+                            Description
+
+                            <textarea
+                                id="complaint-description"
+                                required
+                                rows="5"
+                                placeholder="Describe the issue..."
+                            ></textarea>
+
+                        </label>
+
+
+                        <button class="primary-btn full"
+                                type="submit">
+                            🎫 Submit Issue
+                        </button>
+
+                    </form>
+
+
+                    <div class="complaint-side">
+
+                        <div class="panel help-card">
+
+                            <div class="help-icon">
+                                💡
+                            </div>
+
+                            <h3>Help improve your campus</h3>
+
+                            <p>
+                                Your report will be submitted to the
+                                campus service system with a unique
+                                complaint ID.
+                            </p>
+
+                        </div>
+
+
+                        <div class="panel">
+
+                            <span class="panel-label">
+                                RECENT REPORTS
+                            </span>
+
+                            <div id="recent-complaints">
+                                No reports yet.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 EMERGENCY
+            ================================================== -->
+
+            <div id="emergency-page" class="page">
+
+                <div class="emergency-banner">
+
+                    <div>
+                        <span>🚨 EMERGENCY SERVICES</span>
+
+                        <h2>
+                            Need immediate help?
+                        </h2>
+
+                        <p>
+                            Contact the appropriate campus emergency service.
+                        </p>
+                    </div>
+
+                    <div class="emergency-symbol">
+                        🚨
+                    </div>
+
+                </div>
+
+
+                <div id="emergency-grid"
+                     class="emergency-grid">
+
+                    Loading...
+
+                </div>
+
+
+                <div class="panel emergency-note">
+
+                    <strong>⚠️ Important</strong>
+
+                    <p>
+                        In a life-threatening emergency, contact
+                        the appropriate national emergency service
+                        immediately.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =====================================================
+     MOBILE NAVIGATION
+===================================================== -->
+
+<nav class="mobile-nav">
+
+    <button onclick="showPage('dashboard', this)">
+        🏠
+        <span>Home</span>
+    </button>
+
+    <button onclick="showPage('assistant', this)">
+        🤖
+        <span>AI</span>
+    </button>
+
+    <button onclick="showPage('map', this)">
+        🗺️
+        <span>Map</span>
+    </button>
+
+    <button onclick="showPage('events', this)">
+        📅
+        <span>Events</span>
+    </button>
+
+    <button onclick="showPage('complaints', this)">
+        🎫
+        <span>Help</span>
+    </button>
+
+</nav>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div id="toast-container"></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
