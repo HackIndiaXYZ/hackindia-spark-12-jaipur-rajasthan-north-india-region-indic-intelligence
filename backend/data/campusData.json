@@ -1,1 +1,324 @@
+{
+  "campus": {
+    "name": "Campus Helper University",
+    "tagline": "Smart Campus • Smarter Students",
+    "location": "India"
+  },
 
+  "buildings": [
+    {
+      "id": "building-a",
+      "name": "Building A",
+      "type": "Academic",
+      "floors": 3,
+      "description": "Main academic block with classrooms and faculty offices."
+    },
+    {
+      "id": "building-c",
+      "name": "Building C",
+      "type": "Academic",
+      "floors": 4,
+      "description": "Engineering and computer science academic block."
+    },
+    {
+      "id": "lab-block",
+      "name": "Lab Block",
+      "type": "Laboratory",
+      "floors": 2,
+      "description": "Computer, electronics and engineering laboratories."
+    },
+    {
+      "id": "library",
+      "name": "Central Library",
+      "type": "Library",
+      "floors": 3,
+      "description": "Central library with reading rooms and digital resources."
+    },
+    {
+      "id": "sports",
+      "name": "Sports Complex",
+      "type": "Facility",
+      "floors": 1,
+      "description": "Indoor and outdoor sports facilities."
+    },
+    {
+      "id": "auditorium",
+      "name": "Main Auditorium",
+      "type": "Facility",
+      "floors": 1,
+      "description": "Venue for seminars, cultural events and workshops."
+    }
+  ],
+
+  "classrooms": [
+    {
+      "code": "A-101",
+      "building": "Building A",
+      "floor": 1,
+      "section": "CSE-A",
+      "capacity": 60,
+      "type": "Classroom"
+    },
+    {
+      "code": "A-102",
+      "building": "Building A",
+      "floor": 1,
+      "section": "CSE-B",
+      "capacity": 60,
+      "type": "Classroom"
+    },
+    {
+      "code": "A-201",
+      "building": "Building A",
+      "floor": 2,
+      "section": "ECE-A",
+      "capacity": 70,
+      "type": "Classroom"
+    },
+    {
+      "code": "C-204",
+      "building": "Building C",
+      "floor": 2,
+      "section": "CSE-A",
+      "capacity": 60,
+      "type": "Classroom"
+    },
+    {
+      "code": "C-205",
+      "building": "Building C",
+      "floor": 2,
+      "section": "CSE-B",
+      "capacity": 60,
+      "type": "Classroom"
+    },
+    {
+      "code": "C-301",
+      "building": "Building C",
+      "floor": 3,
+      "section": "AI-ML",
+      "capacity": 55,
+      "type": "Classroom"
+    },
+    {
+      "code": "C-302",
+      "building": "Building C",
+      "floor": 3,
+      "section": "Data Science",
+      "capacity": 55,
+      "type": "Classroom"
+    },
+    {
+      "code": "L-101",
+      "building": "Lab Block",
+      "floor": 1,
+      "section": "Programming Lab",
+      "capacity": 40,
+      "type": "Computer Lab"
+    },
+    {
+      "code": "L-102",
+      "building": "Lab Block",
+      "floor": 1,
+      "section": "Database Lab",
+      "capacity": 40,
+      "type": "Computer Lab"
+    },
+    {
+      "code": "L-201",
+      "building": "Lab Block",
+      "floor": 2,
+      "section": "Computer Networks",
+      "capacity": 40,
+      "type": "Computer Lab"
+    }
+  ],
+
+  "food": [
+    {
+      "id": "canteen-a",
+      "name": "Canteen A - Main Dining",
+      "location": "Ground Floor, Building A",
+      "status": "Open",
+      "timings": "8:00 AM - 8:00 PM",
+      "distance": "200m",
+      "menu": [
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Snacks"
+      ]
+    },
+    {
+      "id": "canteen-b",
+      "name": "Canteen B - Quick Bites",
+      "location": "Near Sports Complex",
+      "status": "Open",
+      "timings": "9:00 AM - 6:00 PM",
+      "distance": "350m",
+      "menu": [
+        "Pizza",
+        "Burgers",
+        "Sandwiches",
+        "Coffee"
+      ]
+    },
+    {
+      "id": "juice-corner",
+      "name": "Juice Corner",
+      "location": "Library Ground Floor",
+      "status": "Open",
+      "timings": "7:00 AM - 10:00 PM",
+      "distance": "150m",
+      "menu": [
+        "Fresh Juices",
+        "Smoothies",
+        "Snacks"
+      ]
+    }
+  ],
+
+  "foodTimings": {
+    "Breakfast": "8:00 AM - 10:30 AM",
+    "Lunch": "12:30 PM - 3:00 PM",
+    "Snacks": "4:00 PM - 6:00 PM",
+    "Dinner": "7:00 PM - 9:00 PM"
+  },
+
+  "library": {
+    "name": "Central Library",
+    "overallCapacity": 65,
+    "status": "Moderately Busy",
+    "timings": "8:00 AM - 10:00 PM",
+    "floors": [
+      {
+        "name": "Ground Floor",
+        "totalSeats": 80,
+        "availableSeats": 25,
+        "status": "Busy"
+      },
+      {
+        "name": "1st Floor",
+        "totalSeats": 100,
+        "availableSeats": 45,
+        "status": "Partial"
+      },
+      {
+        "name": "2nd Floor",
+        "totalSeats": 60,
+        "availableSeats": 48,
+        "status": "Available"
+      }
+    ]
+  },
+
+  "events": [
+    {
+      "id": 1,
+      "title": "Campus Hackathon 2026",
+      "category": "Hackathon",
+      "date": "2026-09-20",
+      "time": "10:00 AM",
+      "venue": "Main Auditorium",
+      "description": "Build innovative solutions for real-world campus and society problems."
+    },
+    {
+      "id": 2,
+      "title": "AI & Machine Learning Workshop",
+      "category": "Workshop",
+      "date": "2026-09-15",
+      "time": "11:00 AM",
+      "venue": "C-204",
+      "description": "Hands-on introduction to modern AI and machine learning."
+    },
+    {
+      "id": 3,
+      "title": "Sports Meet 2026",
+      "category": "Sports",
+      "date": "2026-09-25",
+      "time": "9:00 AM",
+      "venue": "Sports Complex",
+      "description": "Annual inter-department sports competition."
+    },
+    {
+      "id": 4,
+      "title": "Tech Club Orientation",
+      "category": "Club",
+      "date": "2026-09-12",
+      "time": "2:00 PM",
+      "venue": "Main Auditorium",
+      "description": "Introduction to campus technical clubs and upcoming activities."
+    }
+  ],
+
+  "announcements": [
+    {
+      "id": 1,
+      "title": "Mid-Semester Examination Schedule",
+      "category": "Academic",
+      "priority": "High",
+      "date": "2026-09-08",
+      "message": "The mid-semester examination schedule has been published."
+    },
+    {
+      "id": 2,
+      "title": "Library Timings Extended",
+      "category": "Library",
+      "priority": "Medium",
+      "date": "2026-09-08",
+      "message": "Library will remain open until 10:00 PM during examination preparation."
+    },
+    {
+      "id": 3,
+      "title": "Campus Wi-Fi Maintenance",
+      "category": "Infrastructure",
+      "priority": "Medium",
+      "date": "2026-09-10",
+      "message": "Network maintenance is scheduled between 11:00 PM and 1:00 AM."
+    }
+  ],
+
+  "departments": [
+    {
+      "name": "Computer Science & Engineering",
+      "shortName": "CSE",
+      "building": "Building C",
+      "floor": 1
+    },
+    {
+      "name": "Artificial Intelligence & Machine Learning",
+      "shortName": "AI-ML",
+      "building": "Building C",
+      "floor": 3
+    },
+    {
+      "name": "Electronics & Communication Engineering",
+      "shortName": "ECE",
+      "building": "Building A",
+      "floor": 2
+    },
+    {
+      "name": "Information Technology",
+      "shortName": "IT",
+      "building": "Building A",
+      "floor": 2
+    }
+  ],
+
+  "emergency": [
+    {
+      "service": "Campus Security",
+      "contact": "100",
+      "description": "For security emergencies and immediate assistance."
+    },
+    {
+      "service": "Medical Help",
+      "contact": "108",
+      "description": "For medical emergencies."
+    },
+    {
+      "service": "Campus Help Desk",
+      "contact": "1800-000-2026",
+      "description": "General campus assistance."
+    }
+  ]
+}
